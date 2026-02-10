@@ -1,0 +1,167 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <meta name="theme-color" content="#ff4d6d" />
+  <title>Para Ximena la osita Nusita 💘</title>
+
+  <style>
+    :root{
+      --accent:#ff4d6d;
+      --accent-soft:#ffe1ea;
+      --dark:#1f2937;
+    }
+
+    *{ box-sizing:border-box; }
+
+    body{
+      margin:0;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+      background: radial-gradient(circle at top, #ffe6ec, #ffd1dc);
+      color:var(--dark);
+      overflow:hidden;
+    }
+
+    .card{
+      background:white;
+      padding:32px 26px;
+      border-radius:26px;
+      width:min(92vw, 520px);
+      text-align:center;
+      box-shadow:0 20px 50px rgba(0,0,0,.15);
+      position:relative;
+    }
+
+    h1{
+      margin:10px 0;
+      font-size:32px;
+    }
+
+    p{
+      margin:0 0 18px;
+      line-height:1.5;
+    }
+
+    .buttons{
+      display:flex;
+      gap:16px;
+      justify-content:center;
+      margin-top:20px;
+      position:relative;
+      height:60px;
+    }
+
+    button{
+      border:none;
+      padding:14px 22px;
+      border-radius:16px;
+      font-size:16px;
+      font-weight:700;
+      cursor:pointer;
+      transition:.15s ease;
+      box-shadow:0 10px 24px rgba(0,0,0,.12);
+    }
+
+    .yes{
+      background:linear-gradient(135deg, #ff4d6d, #ff8fab);
+      color:white;
+    }
+
+    .yes:hover{
+      transform:translateY(-2px);
+    }
+
+    .no{
+      background:#111827;
+      color:white;
+      position:absolute;
+    }
+
+    .result{
+      display:none;
+      margin-top:20px;
+      padding:16px;
+      border-radius:18px;
+      background:var(--accent-soft);
+    }
+
+    .emoji{
+      font-size:40px;
+      margin-bottom:6px;
+    }
+
+    .small{
+      font-size:12px;
+      opacity:.7;
+      margin-top:12px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="card">
+    <p>💌 Mensaje de alta prioridad</p>
+
+    <h1>Ximena 💘</h1>
+
+    <p>
+      Tengo una pregunta importante para mi osita nusita, es una pregunta directa  
+      y tiene que ver con este 14 de febrero:
+    </p>
+
+    <h1>¿Quieres ser mi San Valentine?</h1>
+
+    <div class="buttons">
+      <button class="yes" id="yesBtn">Sí, claro 💖</button>
+      <button class="no" id="noBtn">No 😅</button>
+    </div>
+
+    <div class="result" id="result">
+      <div class="emoji" id="emoji">💘</div>
+      <h2 id="title"></h2>
+      <p id="message"></p>
+    </div>
+
+    <div class="small">
+      *Este sistema no acepta “tal vez” 😌
+    </div>
+  </div>
+
+  <script>
+    const yesBtn = document.getElementById('yesBtn');
+    const noBtn = document.getElementById('noBtn');
+    const result = document.getElementById('result');
+    const title = document.getElementById('title');
+    const message = document.getElementById('message');
+    const emoji = document.getElementById('emoji');
+
+    yesBtn.onclick = () => {
+      result.style.display = 'block';
+      emoji.textContent = '🎉💖';
+      title.textContent = '¡SÍ ACEPTADO!';
+      message.textContent =
+        'Perfecto. Queda oficialmente confirmado: habrá besos, amor, iloveU y un buen de momentos hermosos este 14 de febrero.';
+    };
+
+    function moveNo(){
+      const maxX = 260;
+      const maxY = 40;
+      noBtn.style.left = Math.random() * maxX + 'px';
+      noBtn.style.top = Math.random() * maxY + 'px';
+    }
+
+    noBtn.addEventListener('mouseenter', moveNo);
+    noBtn.addEventListener('touchstart', e => {
+      e.preventDefault();
+      moveNo();
+    });
+  </script>
+
+</body>
+</html>
